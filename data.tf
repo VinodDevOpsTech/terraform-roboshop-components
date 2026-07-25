@@ -43,6 +43,6 @@ data "aws_ami" "DevOps" {
     }
 
 data "aws_ssm_parameter" "sg_id" {
-    name = "/${var.project}/${var.environment}/${var.component}sg_id"
+    name = "/${var.project}/${var.environment}/${var.component}_sg_id"
 }
 
