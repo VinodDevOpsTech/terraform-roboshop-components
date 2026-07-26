@@ -116,7 +116,7 @@ resource "aws_autoscaling_group" "main" {
     health_check_type         = "ELB"
     force_delete              = false
     launch_template {
-        id = aws_launch_template.catalogue.id
+        id = aws_launch_template.main.id
         version = "$Latest"
     }
     vpc_zone_identifier       = [local.private_subnet_ids]
@@ -161,7 +161,7 @@ target_tracking_configuration {
     
 resource "aws_lb_listener_rule" "main" {
     listener_arn = local.alb_listener_arn
-    priority     = var.priority
+    priority     = var.rule_priority
 
     action {
         type             = "forward"
@@ -174,17 +174,17 @@ resource "aws_lb_listener_rule" "main" {
         }
     }
     }
-/*
-    resource "terraform_data" "catalogue-delete" {
+
+    resource "terraform_data" "main-delete" {
     triggers_replace = [
-        aws_instance.catalogue.id,
+        aws_instance.main.id,
     ]
-    depends_on = [ aws_autoscaling_policy.catalogue ]
+    depends_on = [ aws_autoscaling_policy.main ]
 
     provisioner "local-exec" {
-        command = "aws ec2 terminate-instances --instance-ids ${aws_instance.catalogue.id}"
+        command = "aws ec2 terminate-instances --instance-ids ${aws_instance.main.id}"
     }
-    } */
+    }
 
 
 

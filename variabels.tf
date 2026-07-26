@@ -17,5 +17,5 @@ variable "component" {
     type = string
 }
 variable "rule_priority" {
-    type = string
+    type = number
 }
