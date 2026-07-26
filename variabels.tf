@@ -16,6 +16,6 @@ variable "domain_name" {
 variable "component" {
     type = string
 }
-variable "priority" {
+variable "rule_priority" {
     type = string
 }
