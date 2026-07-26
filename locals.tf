@@ -9,5 +9,5 @@ locals {
         Project = "${var.project}"
         Environment = "${var.environment}"
     }
-    host_header = var.component == "frontend" ? "robohsop-${var.environment}.${var.domain_name}" : "${var.component}.backend_alb-${var.environment}.${var.domain_name}"
+    host_header = var.component == "frontend" ? "roboshop-${var.environment}.${var.domain_name}" : "${var.component}.backend_alb-${var.environment}.${var.domain_name}"
 }
